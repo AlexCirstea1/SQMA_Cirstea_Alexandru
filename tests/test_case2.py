@@ -9,10 +9,8 @@ class TestCase2(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    # Ensure the test-reports directory exists
     if not os.path.exists('test-reports'):
         os.makedirs('test-reports')
 
-    # Run tests and output XML reports
     with open('test-reports/test_case2.xml', 'wb') as output:
         unittest.main(testRunner=xmlrunner.XMLTestRunner(output=output))

@@ -40,7 +40,6 @@ pipeline {
                         '''
                     }
                 }
-                // Add more test stages here if you have additional tests
             }
         }
 
@@ -56,7 +55,7 @@ pipeline {
 
     post {
         always {
-            junit 'test-reports/*.xml' // Adjusted to match the report generation path
+            junit 'test-reports/*.xml'
             archiveArtifacts artifacts: 'test-reports/*.xml', allowEmptyArchive: true
             echo 'Pipeline completed.'
         }

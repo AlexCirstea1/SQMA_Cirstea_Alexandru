@@ -9,7 +9,6 @@ class TestCase1(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    # Ensure the test-reports directory exists
     if not os.path.exists('test-reports'):
         os.makedirs('test-reports')
 
