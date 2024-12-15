@@ -14,8 +14,8 @@ pipeline {
                     echo "Setting up Python environment"
                     python3 -m venv venv
                     source venv/bin/activate
-                    pip3 install --upgrade pip
-                    pip3 install -r requirements.txt
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
                 '''
             }
         }
@@ -40,6 +40,7 @@ pipeline {
                         '''
                     }
                 }
+                // Add more test stages here if you have additional tests
             }
         }
 
@@ -47,7 +48,6 @@ pipeline {
             steps {
                 sh '''
                     echo "Cleaning up environment"
-                    deactivate
                     rm -rf venv
                 '''
             }
@@ -56,8 +56,8 @@ pipeline {
 
     post {
         always {
-            junit '**/test-reports/*.xml'
-            archiveArtifacts artifacts: '**/test-reports/*.xml', allowEmptyArchive: true
+            junit 'test-reports/*.xml' // Adjusted to match the report generation path
+            archiveArtifacts artifacts: 'test-reports/*.xml', allowEmptyArchive: true
             echo 'Pipeline completed.'
         }
         success {
